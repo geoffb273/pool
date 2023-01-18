@@ -8,18 +8,22 @@ class GameObject extends PureComponent {
     constructor() {
         super()
     }
+
     render() {
-        const x = this.props.position[0] - RADIUS / 2;
+        const x = this.props.position[0] - RADIUS;
         
-        const y = this.props.position[1] - RADIUS / 2;
-        console.log(this.props)
-        const text = this.props.text ? this.props.text : "Bye"
+        const y = this.props.position[1] - RADIUS;
+        
+        let num = <></>
+        if (this.props.number) {
+            num = <Text>{this.props.number}</Text>
+        }
         return (
-        <View style={[{ left: x, top: y }]} >
-           <Text>{text}</Text>
+        <View style={[this.props.style, { left: x, top: y }]} >
+            {num}
         </View>
         );
     }
 }
- 
+
 export { GameObject };
